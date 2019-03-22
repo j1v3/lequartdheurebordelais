@@ -1,0 +1,12 @@
+{% for category in categories %}
+<div class="collapse navbar-collapse" id="navbar-simples">
+	<ul class="nav navbar-nav">
+	    <li><a href='#'><span>{{ category.title }}</span></a></li>
+	    <ul>
+	    {% for sub_category in category.subCategories %}
+	        <li><a href='#'><span>{{ sub_category.title }}</span></a></li>
+	    {% endfor %}
+	    </ul>
+	</ul>
+</div>    
+{% endfor %}

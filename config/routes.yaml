@@ -18,5 +18,9 @@ content_show:
     path: /content/{slug}
     controller: App\Controller\ContentController::show
 
+menu:
+    path: /menu
+    controller: App\Controller\MenuController::display
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -22,6 +22,20 @@ class CategoryRepository extends ServiceEntityRepository
     // /**
     //  * @return Category[] Returns an array of Category objects
     //  */
+    public function findCategories()
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.isPublished IS NOT NULL')
+            ->andWhere('c.deletedAt IS NULL')
+            ->orderBy('c.ranking', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return Category[] Returns an array of Category objects
+    //  
     /*
     public function findByExampleField($value)
     {
