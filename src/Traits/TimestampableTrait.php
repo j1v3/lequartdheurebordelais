@@ -5,9 +5,11 @@ namespace App\Traits;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
+/*
+ * @ORM\HasLifecycleCallbacks
+ */
 trait TimestampableTrait
 {
-	
     /**
      * @var \DateTime
      *
@@ -28,12 +30,28 @@ trait TimestampableTrait
 
     public function getCreatedAt(): \DateTime
     {
-        return $this->createdAt;
+        if ($this->createdAt) {
+            return $this->createdAt;
+        }
+        else {
+            return new \DateTime;
+        }
+    }
+
+    
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 
     public function getUpdatedAt(): \DateTime
     {
-        return $this->updatedAt;
+        if ($this->updatedAt) {
+           return $this->updatedAt;
+       }
+       else {
+            return new \DateTime;
+       }
     }
 
     public function setUpdatedAt(\DateTime $updatedAt)

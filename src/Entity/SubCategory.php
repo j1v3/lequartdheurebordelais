@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use App\Traits\PublishableTrait;
@@ -10,6 +12,7 @@ use App\Traits\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubCategoryRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class SubCategory
 {
@@ -50,6 +53,21 @@ class SubCategory
      * @ORM\Column(type="integer", nullable=true)
      */
     private $ranking;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Content", mappedBy="subCategory")
+     */
+    private $contents;
+
+    public function __construct()
+    {
+        $this->contents = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
 
     public function getId(): ?int
     {
@@ -112,6 +130,37 @@ class SubCategory
     public function setRanking(?int $ranking): self
     {
         $this->ranking = $ranking;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Content[]
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents[] = $content;
+            $content->setSubCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        if ($this->contents->contains($content)) {
+            $this->contents->removeElement($content);
+            // set the owning side to null (unless already changed)
+            if ($content->getSubCategory() === $this) {
+                $content->setSubCategory(null);
+            }
+        }
 
         return $this;
     }

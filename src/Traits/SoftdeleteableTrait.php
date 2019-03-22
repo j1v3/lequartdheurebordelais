@@ -31,7 +31,7 @@ trait SoftdeleteableTrait
         return $this->deletedAt;
     }
 
-    public function setDeletedAt(?\DateTimeInterface $publishedAt): self
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
 

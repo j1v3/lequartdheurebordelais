@@ -12,6 +12,7 @@ use App\Traits\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Tag
 {
@@ -50,6 +51,11 @@ class Tag
     public function __construct()
     {
         $this->content = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getTitle();
     }
 
     public function getId(): ?int

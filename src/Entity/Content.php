@@ -12,6 +12,7 @@ use App\Traits\TimestampableTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Content
 {
@@ -29,7 +30,6 @@ class Content
      * @ORM\Column(type="string", length=255)
      */
     private $title;
-
 
     /**
      * @var string|null
@@ -66,9 +66,25 @@ class Content
      */
     private $ranking;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="contents")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SubCategory", inversedBy="contents")
+     */
+    private $subCategory;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->getTitle();
     }
 
     public function getId(): ?int
@@ -172,6 +188,30 @@ class Content
     public function setRanking(?int $ranking): self
     {
         $this->ranking = $ranking;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?SubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
 
         return $this;
     }
