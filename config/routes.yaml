@@ -1,6 +1,18 @@
-index:
+homepage:
     path: /
     controller: App\Controller\MainController::index
+
+about:
+    path: /about
+    controller: App\Controller\MainController::about
+
+contact:
+    path: /contact
+    controller: App\Controller\MainController::contact
+
+search:
+    path: /search
+    controller: App\Controller\MainController::search
 
 content_show:
     path: /content/{slug}
