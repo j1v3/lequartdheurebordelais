@@ -122,7 +122,17 @@
                     <li class="dropdown pull-right"><a href="{{ path('fos_user_security_logout') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% trans %}login.logout{% endtrans %}</a></li>
                 {% else %}
                     <li class="dropdown pull-right"><a href="{{ path('fos_user_security_login') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans %}login.login{% endtrans %}</a></li>
-                {% endif %}              
+                {% endif %}
+
+            <!--|| BEGIN ADMIN LINK ||-->
+            {% if is_granted('ROLE_ADMIN') -%}
+            <li class="dropdown">     
+              <li class="dropdown">
+                <a href="{{ path('admin') }}" style="color:#15609f"><span class="glyphicon glyphicon-king" aria-hidden="true"></span> {{ 'admin.panel'|trans }}</a>
+              </li>
+            </li>
+            {% endif %}
+            <!--|| END ADMIN LINK ||-->              
             </ul>
             <!--| Login/Logout End |-->
           </div>
