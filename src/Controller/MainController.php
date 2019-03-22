@@ -3,7 +3,6 @@
 namespace App\Controller;
   
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -60,7 +59,7 @@ class MainController extends AbstractController
                 $message = (new \Swift_Message())
                     ->setSubject('Contact enquiry from Example')
                     ->setFrom('contact@lequartdheurebordealis.com')
-                    ->setTo('contact@lequartdheurebordealis.com')
+                    ->setTo('contact@lequartdheurebordelais.com')
                     ->setBody($this->renderView('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)))
                 ;
 

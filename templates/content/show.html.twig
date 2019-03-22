@@ -1,0 +1,17 @@
+{# templates/content/show.html.twig #}
+{% extends 'layout.html.twig' %}
+ 
+{% block title %}{{ content.title }}{% endblock %}
+ 
+{% block body %}
+    <article class="content">
+        <header>
+            <div class="date"><time datetime="{{ content.created|date('c') }}">{{ content.created|date('l, F j, Y') }}</time></div>
+            <h2>{{ content.title }}</h2>
+        </header>
+        <img src="{{ asset(['images/content/', content.image]|join) }}" alt="{{ content.title }} image not found" class="large" />
+        <div>
+            <p>{{ content.body }}</p>
+        </div>
+    </article>
+{% endblock %}

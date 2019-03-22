@@ -2,5 +2,9 @@ index:
     path: /
     controller: App\Controller\MainController::index
 
+content_show:
+    path: /content/{slug}
+    controller: App\Controller\ContentController::show
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
