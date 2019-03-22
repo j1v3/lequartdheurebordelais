@@ -9,6 +9,7 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class MainController extends AbstractController
 {
@@ -44,26 +45,29 @@ class MainController extends AbstractController
      /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request)
+    public function contact(Request $request, \Swift_Mailer $mailer)
     {
         $enquiry = new Contact();
         $form = $this->createForm(ContactType::class, $enquiry);
      
          $this->request = $request;
             if ($request->getMethod() == 'POST') {
-            $form->bind($request);
+            $form->handleRequest($request);
      
      
             if ($form->isValid()) {
                 // Perform some action, such as sending an email
-                $message = \Swift_Message::newInstance()
+                $message = (new \Swift_Message())
                     ->setSubject('Contact enquiry from Example')
                     ->setFrom('contact@lequartdheurebordealis.com')
-                    ->setTo($this->container->getParameter('app.emails.contact_email'))
-                    ->setBody($this->renderView('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)));
-                $this->get('mailer')->send($message);
-             
-            $this->get('session')->getFlashbag('blog-notice', 'Your contact enquiry was successfully sent. Thank you!');
+                    ->setTo('contact@lequartdheurebordealis.com')
+                    ->setBody($this->renderView('contact/contactEmail.txt.twig', array('enquiry' => $enquiry)))
+                ;
+
+                $mailer->send($message);
+
+                $session = new Session();
+                $session->getFlashbag()->add('blog-notice', 'Your contact enquiry was successfully sent. Thank you!');
   
                 // Redirect - This is important to prevent users re-posting
                 // the form if they refresh the page
