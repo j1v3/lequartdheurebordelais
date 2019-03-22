@@ -99,6 +99,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "friendsofsymfony/user-bundle": {
+        "version": "2.2.x-dev"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
