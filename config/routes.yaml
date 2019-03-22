@@ -22,5 +22,9 @@ menu:
     path: /menu
     controller: App\Controller\MenuController::display
 
+tagCloud:
+    path: /tagCloud
+    controller: App\Controller\MainController::displayTags
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

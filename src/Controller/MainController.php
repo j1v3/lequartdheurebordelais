@@ -41,6 +41,24 @@ class MainController extends AbstractController
         return $this->render('sidebar/sidebar.html.twig');
     }
  
+    /**
+     * @Route("/tagCloud", name="tabCloud")
+     */
+    public function displayTags()
+    {
+        $em = $this->getDoctrine()->getManager();
+  
+        $tags = $em->getRepository('App:Tag')->findTags();
+  
+        if (!$tags) {
+        throw $this->createNotFoundException('Unable to find tags !');
+        }
+
+        return $this->render('sidebar/tagCloud.html.twig', array(
+            'tags' => $tags,
+        ));   
+    }
+
      /**
      * @Route("/contact", name="contact")
      */
@@ -49,6 +67,7 @@ class MainController extends AbstractController
         $enquiry = new Contact();
         $form = $this->createForm(ContactType::class, $enquiry);
      
+  
          $this->request = $request;
             if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);

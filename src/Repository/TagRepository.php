@@ -19,6 +19,21 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
+
+    // /**
+    //  * @return Tag[] Returns an array of Tag objects
+    //  */
+    public function findTags()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.isPublished IS NOT NULL')
+            ->andWhere('t.deletedAt IS NULL')
+            ->orderBy('t.ranking', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */

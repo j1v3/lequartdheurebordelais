@@ -197,6 +197,24 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <!-- FontAweSome JS -->
           <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+          <!--[if lt IE 9]>
+          <script type="text/javascript" src="{{ asset('js/excanvas.js') }}"></script>
+          <![endif]-->
+          <script src="{{ asset('js/jquery.tagcanvas.min.js') }}" type="text/javascript"></script>
+          <script type="text/javascript">
+            $(document).ready(function() {
+            if( ! $('#myCanvas').tagcanvas({
+                textColour : '#105ea0',
+                outlineThickness : 1,
+                maxSpeed : 0.03,
+                depth : 0.75
+            })) {
+            // TagCanvas failed to load
+            $('#myCanvasContainer').hide();
+   }
+ });
+ </script>
         {% endblock javascripts %}
       </div>
     </body>

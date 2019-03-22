@@ -1,14 +1,9 @@
 {# templates/sidebar/sidebar.html.twig #}
  
 {% block sidebar %}
-	<section class="section">
-	    <header>
-	        <h3>Tag Cloud</h3>
-	    </header>
-	    <p class="tags">
-	         
-	    </p>
-	</section>
+
+    <!--| Display TagCloud |-->
+    {{ render(path('tagCloud')) }}
 
 	<section class="section">
     <header>

@@ -1,0 +1,20 @@
+	<section class="section">
+	    <header>
+	        <h3>Tag Cloud</h3>
+	    </header>
+	    <p class="tags">
+         <div id="myCanvasContainer">
+			 <canvas id="myCanvas">
+			  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+			  <ul>
+			  <li><a href="http://www.google.com" target="_blank">Google</a></li>
+			  <li><a href="http://www.facebook.com" target="_blank">Facebook</a></li>
+			  <li><a href="http://www.twitter.com" target="_blank">Twitter</a></li>
+			  {% for tag in tags %}
+				<li><a href="#" target="_blank">{{ tag.title }}</a></li>
+			  {% endfor %}
+  			  </ul>
+			 </canvas>
+			</div>
+	    </p>
+	</section>
