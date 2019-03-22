@@ -7,6 +7,9 @@ parameters:
     locale: 'fr'
     app.locale: 'fr|en'
 
+    # Contact email address
+    app.emails.contact_email: contact@lequartdheurebordelais.com
+
 services:
     # default configuration for services in *this* file
     _defaults:
