@@ -1,12 +1,28 @@
 {% for category in categories %}
-<div class="collapse navbar-collapse" id="navbar-simples">
-	<ul class="nav navbar-nav">
-	    <li><a href='#'><span>{{ category.title }}</span></a></li>
-	    <ul>
-	    {% for sub_category in category.subCategories %}
-	        <li><a href='#'><span>{{ sub_category.title }}</span></a></li>
-	    {% endfor %}
+
+{% set counter = category.subCategories|length %}
+
+		{% if counter > 0 %}
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#337ab7">
+			{{ category.title }}
+			<span class="caret"></span>
+			</a>
+	    {% else %}
+	    <li>
+	    	<a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" style="color:#337ab7">
+	    	{{ category.title }}
+	    	</a>
+    	</li>
+	    {% endif %}
+	    
+	    {% if counter > 0 %}
+	    <ul class="dropdown-menu">
+		    {% for sub_category in category.subCategories %}
+		        <li>
+		        	<a href='#' style="color:#337ab7">{{ sub_category.title }}</a>
+	        	</li>
+		    {% endfor %}
 	    </ul>
-	</ul>
-</div>    
+	    {% endif %}
 {% endfor %}

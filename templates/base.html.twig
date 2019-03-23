@@ -33,7 +33,7 @@
   <body>
  
     <div id="blog" class="container">
-      <!--|| Locale Switch ||-->
+      <!--|| Locale Switch 
       <br/>
       <div class="row">
         <div class="col-xs-3 col-sm-1 col-md-1 col-xs-offset-6 col-sm-offset-10 col-md-offset-10">
@@ -42,12 +42,12 @@
           </a>
         </div>
         <div class="col-xs-3 col-sm-1 col-md-1">
-          <a href="/englais" class="thumbnail">
-            <img src="{{ asset('images/flags/en.png') }}" alt="englais">
+          <a href="/english" class="thumbnail">
+            <img src="{{ asset('images/flags/en.png') }}" alt="english">
           </a>
         </div>
       </div>
- 
+      ||-->
       {% block header %}
         <div class="row">
           <div class="col-md-12">
@@ -55,7 +55,10 @@
               <hgroup>
                 <h2>
                   {% block blog_title %}
-                    <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo-md.png') }}"/><!--{{ 'site.name'|trans }}--></a>
+                    <a href="{{ path('homepage') }}">
+                    <img src="{{ asset('images/bandeau.jpg') }}"/>
+                    <!--{{ 'site.name'|trans }}-->
+                    </a>
                   </img>
                 {% endblock blog_title %}
               </h2>
@@ -74,7 +77,7 @@
       <nav class="navbar navbar-default" role="navigation">
  
         <div class="container-fluid">
- 
+
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-simples">
               <span class="sr-only">Toggle navigation</span>
@@ -86,34 +89,32 @@
               {{ 'nav.home'|trans }}
             </a>
           </div>
-          
-            <!--| Display Menu |-->
+
+          <!-- Liens de navigation, formulaires et autres -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+            <!--| Display Menus |-->
             {{ render(path('menu')) }}
 
-          <div class="collapse navbar-collapse" id="navbar-simples">
-            <ul class="nav navbar-nav">
+              <!--| About |-->
               <li>
-                <a href="{{ path('about') }}" style="color:#337ab7">
-                  {{ 'nav.about'|trans }}
+                <a href="{{ path('about') }}" title="{{ 'nav.about'|trans }}" style="color:#337ab7">
+                {{ 'nav.about'|trans }}
+                <span class="sr-only">{{ 'nav.about'|trans }}</span>
                 </a>
               </li>
+
+              <!--| Contact |-->
               <li>
-                <a href="{{ path('contact') }}" style="color:#337ab7">
-                  {{ 'nav.contact'|trans }}
+                <a href="{{ path('contact') }}" title="{{ 'nav.contact'|trans }}" style="color:#337ab7">
+                {{ 'nav.contact'|trans }}
+                <span class="sr-only">{{ 'nav.contact'|trans }}</span>
                 </a>
               </li>
-              <li>
-                <a href="{{ path('search') }}" style="color:#337ab7">
-                  {{ 'nav.search'|trans }}
-                </a>
-              </li>
+
             </ul>
-               <li>
-                 <a href="{{ path('search') }}" style="color:#337ab7">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> {% trans %}nav.search{% endtrans %}
-                 </a>
-              </li>
-            </ul>
+
             <!--| Login/Logout Start-needed |-->
             <ul class="nav navbar-nav navbar-right">         
             <!--| Login/Logout End-needed |-->
@@ -125,17 +126,7 @@
                     <li class="dropdown pull-right"><a href="{{ path('fos_user_security_logout') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> {% trans %}login.logout{% endtrans %}</a></li>
                 {% else %}
                     <li class="dropdown pull-right"><a href="{{ path('fos_user_security_login') }}" style="color:#15609f"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> {% trans %}login.login{% endtrans %}</a></li>
-                {% endif %}
-
-            <!--|| BEGIN ADMIN LINK ||-->
-            {% if is_granted('ROLE_ADMIN') -%}
-            <li class="dropdown">     
-              <li class="dropdown">
-                <a href="{{ path('admin') }}" style="color:#15609f"><span class="glyphicon glyphicon-king" aria-hidden="true"></span> {{ 'admin.panel'|trans }}</a>
-              </li>
-            </li>
-            {% endif %}
-            <!--|| END ADMIN LINK ||-->              
+                {% endif %}             
             </ul>
             <!--| Login/Logout End |-->
           </div>
@@ -174,16 +165,17 @@
  
               <div id="footerInfo" class="text-center">
                 {% trans %}footer.copy{% endtrans %}
-                &copy; 2015-{{ "now" | date("Y") }}
+                &copy; 2019-2023
                 <a href="{{ 'footer.mail.username'|trans }}@{{ 'footer.mail.domain'|trans }}">{{ 'footer.mail.title'|trans }}
                 </a>
                 <br>
+                <!--||
                 <a href="">{{ 'legal.terms'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="">{{ 'legal.disclaimer'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="">{{ 'legal.privacy'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="">{{ 'legal.trademarks'|trans }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="">{{ 'legal.imprint'|trans }}</a>
- 
+                ||-->
               </div>
             </div>
           {% endblock footer %}
@@ -212,9 +204,22 @@
             })) {
             // TagCanvas failed to load
             $('#myCanvasContainer').hide();
-   }
- });
- </script>
+            }
+          });
+        </script>
+        <script type="text/javascript">
+        /* navigation sub-menu display */
+
+        // Change 'hover' to 'click' if you want to
+        $('.menu li > .sub-menu').parent().hover(function() {
+        var submenu = $(this).children('.sub-menu');
+          if ( $(submenu).is(':hidden') ) {
+            $(submenu).slideDown(200);
+          } else {
+            $(submenu).slideUp(200);
+          }
+        });
+        </script>
         {% endblock javascripts %}
       </div>
     </body>

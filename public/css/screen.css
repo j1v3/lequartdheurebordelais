@@ -41,7 +41,20 @@ body {
   color: #000;
   font-size: 14px;
 }
- 
+
+.menu li {
+  list-style: none;
+  padding: 5px 10px;
+}
+
+.menu > li {
+  float: left;
+}
+
+.menu .sub-menu {
+  display: none;
+}
+
 .clear {
   clear: both;
 }
@@ -99,7 +112,7 @@ body {
 #header h3 {
   text-align: center;
   font-family: 'La Belle Aurore', cursive;
-  font-size: 24px;
+  font-size: 68px;
   margin-bottom: 20px;
   font-weight: normal;
 }

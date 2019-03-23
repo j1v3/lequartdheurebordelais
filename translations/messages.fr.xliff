@@ -6,25 +6,25 @@
 <!--|| SITE ||-->   
             <trans-unit id="_site.title">           
                 <source>site.title</source>
-                <target>Unicorn Blog</target>
+                <target>Le quart d'heure bordelais</target>
             </trans-unit>
             <trans-unit id="_site.tagline">            
                 <source>site.tagline</source>
-                <target>Secure- International - Future Proof!</target>
+                <target>Le Quart d'Heure Bordelais</target>
             </trans-unit>
             <trans-unit id="_site.name">           
                 <source>site.name</source>
-                <target>Unicorn</target>
+                <target>Le quart d'heure bordelais</target>
             </trans-unit>
   
 <!--|| NAV ||-->        
             <trans-unit id="_nav.home">
                 <source>nav.home</source>
-                <target>Home</target>
+                <target>Accueil</target>
             </trans-unit>
             <trans-unit id="_nav.about">
                 <source>nav.about</source>
-                <target>About</target>
+                <target>A propos</target>
             </trans-unit>
             <trans-unit id="_nav.contact">
                 <source>nav.contact</source>
@@ -32,7 +32,7 @@
             </trans-unit>
             <trans-unit id="_nav.search">
                 <source>nav.search</source>
-                <target>Search</target>
+                <target>Recherche</target>
             </trans-unit>
   
 <!--|| LOCALE ||-->
@@ -48,19 +48,19 @@
 <!--|| FOOTER ||-->
             <trans-unit id="_footer.copy">            
                 <source>footer.copy</source>
-                <target>Unicorn Blog</target>
+                <target>Le quart d'heure bordelais</target>
             </trans-unit>
             <trans-unit id="_footer.mail.username">            
                 <source>footer.mail.username</source>
-                <target>hyperclock</target>
+                <target>Justine Lemaire</target>
             </trans-unit>
             <trans-unit id="_footer.mail.domain">            
                 <source>footer.mail.domain</source>
-                <target>unicorn-blog.org</target>
+                <target>www.lequartdheurebordelais.com</target>
             </trans-unit>
             <trans-unit id="_footer.mail.title">            
                 <source>footer.mail.title</source>
-                <target>JMColeman (hyperclock)</target>
+                <target>Justine Lemaire</target>
             </trans-unit>
   
 <!--|| LEGAL ||-->
@@ -88,7 +88,7 @@
 <!--|| FORM ||-->
             <trans-unit id="_form.name">            
                 <source>Name</source>
-                <target>Name</target>
+                <target>Nom</target>
             </trans-unit>
             <trans-unit id="_form.email">            
                 <source>Email</source>
@@ -96,11 +96,11 @@
             </trans-unit>
             <trans-unit id="_form.subject">            
                 <source>Subject</source>
-                <target>Subject</target>
+                <target>Sujet</target>
             </trans-unit>     
             <trans-unit id="_form.body">            
                 <source>Body</source>
-                <target>Body</target>
+                <target>Message</target>
             </trans-unit>   
   
 <!--|| GENERIC ||-->
