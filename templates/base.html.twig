@@ -77,17 +77,14 @@
       <nav class="navbar navbar-default" role="navigation">
  
         <div class="container-fluid">
-
           <div class="navbar-header">
+            <!-- Liens de navigation, formulaires et autres -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-simples">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}" style="color:#105ea0">
-              {{ 'nav.home'|trans }}
-            </a>
           </div>
 
           <!-- Liens de navigation, formulaires et autres -->
@@ -206,19 +203,6 @@
             $('#myCanvasContainer').hide();
             }
           });
-        </script>
-        <script type="text/javascript">
-        /* navigation sub-menu display */
-
-        // Change 'hover' to 'click' if you want to
-        $('.menu li > .sub-menu').parent().hover(function() {
-        var submenu = $(this).children('.sub-menu');
-          if ( $(submenu).is(':hidden') ) {
-            $(submenu).slideDown(200);
-          } else {
-            $(submenu).slideUp(200);
-          }
-        });
         </script>
         {% endblock javascripts %}
       </div>

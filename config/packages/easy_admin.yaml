@@ -1,9 +1,60 @@
 easy_admin:
     entities:
-#        # List the entity class name you want to manage
-        - App\Entity\User
-        - App\Entity\Category
-        - App\Entity\SubCategory
-        - App\Entity\Content
-        - App\Entity\Comment
-        - App\Entity\Tag
+        Categories:
+            class: App\Entity\Category
+            form:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', label: 'Description' }
+                    - { property: 'owner', label: 'Créé par' }
+                    - { property: 'ranking', label: 'Position' }
+                    - { property: 'isPublished', label: 'Publié' }
+        SousCategories:
+            class: App\Entity\SubCategory
+            form:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', label: 'Description' }
+                    - { property: 'category', label: 'Categorie' }
+                    - { property: 'owner', label: 'Créateur' }
+                    - { property: 'ranking', label: 'Position' }
+                    - { property: 'isPublished', label: 'Publié' }
+        Contenus:
+            class: App\Entity\Content
+            form:
+                fields:
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'body', type: 'fos_ckeditor', label: 'Page' }
+                    - { property: 'owner', label: 'Créé par' }
+                    - { property: 'category', label: 'Categorie' }
+                    - { property: 'subCategory', label: 'Sous Categorie' }
+                    - { property: 'ranking', label: 'Position' }
+                    - { property: 'isPublished', label: 'Publié' }
+        Commentaires:
+            class: App\Entity\Comment
+            form:
+                fields:
+                    - { property: 'body', type: 'fos_ckeditor' }
+                    - { property: 'owner', label: 'Créé par' }
+                    - { property: 'isPublished', label: 'Publié' }
+        Tags:
+            class: App\Entity\Tag
+            form:
+                fields:
+                    - { property: 'title', label: 'Tag' }
+                    - { property: 'ranking', label: 'Position' }
+                    - { property: 'owner', label: 'Créé par' }
+                    - { property: 'isPublished', label: 'Publié' }
+        Utilisateurs:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'username', label: 'Nom d utilisateur' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'password', label: 'Mot de passe' }
+                    - { property: 'enabled', label: 'Activé' }
+                    - { property: 'contents', label: 'Contenu(s) créé(s)' }
+                    - { property: 'categories', label: 'Catégories créées' }
+                    - { property: 'subCategories', label: 'Sous Catégories créées' }
+                    - { property: 'comments', label: 'Commentaires créés' }
+                    - { property: 'tags', label: 'Tags créés' }
