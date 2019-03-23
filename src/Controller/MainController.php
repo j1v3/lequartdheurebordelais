@@ -59,6 +59,24 @@ class MainController extends AbstractController
         ));   
     }
 
+    /**
+     * @Route("/latestComments", name="latestComments")
+     */
+    public function latestComments()
+    {
+        $em = $this->getDoctrine()->getManager();
+  
+        $comments = $em->getRepository('App:Comment')->findLatestComments();
+  
+        if (!$comments) {
+        throw $this->createNotFoundException('Unable to find comments !');
+        }
+
+        return $this->render('sidebar/latestComments.html.twig', array(
+            'comments' => $comments,
+        ));   
+    }
+
      /**
      * @Route("/contact", name="contact")
      */

@@ -1,0 +1,17 @@
+	<section class="section">
+	    <header>
+	        <h3>Dernier commentaires</h3>
+	    </header>
+	    <p class="">
+			  {% for comment in comments %}
+				<p>{{ comment.body|raw }}</p>
+				<p style="text-align: right; font-style: oblique">
+				{% if comment.publishedAt is not null %}
+				publié le {{ comment.publishedAt|raw }} par {{ comment.owner|raw }}
+				{% else %}
+				publié le {{ 'now'|date("d/m/Y") }} par {{ comment.owner|raw }}
+				{% endif %}
+				</p>
+			  {% endfor %}
+	    </p>
+	</section>

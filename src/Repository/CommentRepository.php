@@ -22,6 +22,20 @@ class CommentRepository extends ServiceEntityRepository
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */
+    public function findLatestComments()
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.isPublished IS NOT NULL')
+            ->andWhere('c.deletedAt IS NULL')
+            ->orderBy('c.publishedAt', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return Comment[] Returns an array of Comment objects
+    //  */
     /*
     public function findByExampleField($value)
     {

@@ -26,5 +26,9 @@ tagCloud:
     path: /tagCloud
     controller: App\Controller\MainController::displayTags
 
+latestComments:
+    path: /latestComments
+    controller: App\Controller\MainController::latestComments
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
